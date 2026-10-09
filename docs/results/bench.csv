@@ -1,0 +1,4 @@
+node,instance_type,arch,vcpus,years_per_s_1_proc,years_per_s_all_vcpus,scaling_1_to_all,on_demand_usd_hr,spot_min_usd_hr,usd_per_million_years_on_demand,usd_per_million_years_spot,digest,digest_1_proc,cost_vs_best_on_demand
+amd,c7a.large,x86_64,2,1036.0,2186.8,2.11,0.10264,0.0332,0.013,0.0042,07394c4b0c9564a3,07394c4b0c9564a3,1.07
+graviton,c7g.large,aarch64,2,827.1,1658.9,2.01,0.0725,0.0253,0.0121,0.0042,07394c4b0c9564a3,07394c4b0c9564a3,1.0
+intel,c7i.large,x86_64,2,1215.1,1249.3,1.03,0.08925,0.0292,0.0198,0.0065,07394c4b0c9564a3,07394c4b0c9564a3,1.64

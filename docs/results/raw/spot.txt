@@ -1,0 +1,12 @@
+--- 11:04:35 UTC
+checkpoint: 640,000 of 2,400,000 years (26.7%), 32 chunks, saved 11:04:13 by i-0e16b338327dd8d18 (m6g.large)
+  10:51:34  started                    i-0807d30feba58a351 c6g.large us-east-1a spot  {"chunk": 20000, "years": 2400000}
+  11:00:55  rebalance-recommendation   i-0807d30feba58a351 c6g.large us-east-1a spot  {"body": {"noticeTime": "2026-10-09T11:00:52Z"}}
+  11:00:56  interruption-notice        i-0807d30feba58a351 c6g.large us-east-1a spot  {"body": {"action": "terminate", "time": "2026-10-09T11:02:52Z"}}
+  11:01:10  stopped-for-interruption   i-0807d30feba58a351 c6g.large us-east-1a spot  {"chunks_done": 31, "next_start": 620000, "seconds_after_notice": 14.8}
+  11:03:50  resumed                    i-0e16b338327dd8d18 m6g.large us-east-1c spot  {"checkpoint_by": "i-0807d30feba58a351", "checkpoint_saved_at": 1791543670.285, "chunks_done": 31, "from_year": 620000}
+  ASG 10:51:19  Successful  Launching a new EC2 instance: i-0807d30feba58a351
+  ASG 11:03:21  Successful  Terminating EC2 instance: i-0807d30feba58a351
+  ASG 11:03:24  Failed      Launching a new EC2 instance.  Status Reason: Could not launch Spot Instances. Insufficien
+  ASG 11:03:33  Successful  Launching a new EC2 instance: i-0e16b338327dd8d18
+interruption: {"notice_at": "11:00:56", "notice_says_terminate_at": "2026-10-09T11:02:52Z", "stopped_seconds_after_notice": 14.8, "stopped_at_year": 620000, "interrupted_instance": "i-0807d30feba58a351 (c6g.large, us-east-1a)", "rebalance_before_notice_s": 1.0, "resumed_at": "11:03:50", "resumed_from_year": 620000, "years_lost_or_repeated": 0, "gap_stop_to_resume_s": 159.7, "replacement_instance": "i-0e16b338327dd8d18 (m6g.large, us-east-1c)"}

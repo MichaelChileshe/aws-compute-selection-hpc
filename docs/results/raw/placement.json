@@ -1,0 +1,86 @@
+{
+ "nodes": [
+  {
+   "id": "i-0325cd0ae217d6e1c",
+   "type": "c7i.large",
+   "az": "us-east-1b",
+   "group": "themba-hpc-spread",
+   "ip": "10.140.2.254"
+  },
+  {
+   "id": "i-0c6e5d23e638afd76",
+   "type": "c7i.large",
+   "az": "us-east-1a",
+   "group": "themba-hpc-spread",
+   "ip": "10.140.1.248"
+  },
+  {
+   "id": "i-097606fb8525cd223",
+   "type": "c7i.large",
+   "az": "us-east-1a",
+   "group": "themba-hpc-cluster",
+   "ip": "10.140.1.195"
+  },
+  {
+   "id": "i-058fe8c255c6af5d4",
+   "type": "c7i.large",
+   "az": "us-east-1a",
+   "group": "themba-hpc-spread",
+   "ip": "10.140.1.224"
+  },
+  {
+   "id": "i-0634a2efe1020dac3",
+   "type": "c7i.large",
+   "az": "us-east-1a",
+   "group": "themba-hpc-cluster",
+   "ip": "10.140.1.86"
+  }
+ ],
+ "pairs": [
+  {
+   "pair": "cluster-a -> cluster-b",
+   "placement": "cluster group, same AZ",
+   "src_az": "us-east-1a",
+   "dst_az": "us-east-1a",
+   "rtt_avg_ms": 0.235,
+   "rtt_min_ms": 0.07,
+   "rtt_max_ms": 1.715,
+   "rtt_mdev_ms": 0.063,
+   "loss_pct": 0.0,
+   "gbps_1_stream": 9.53,
+   "gbps_8_streams": 12.409,
+   "retransmits_1": 174,
+   "retransmits_8": 24013
+  },
+  {
+   "pair": "spread-a -> spread-b",
+   "placement": "spread group, same AZ",
+   "src_az": "us-east-1a",
+   "dst_az": "us-east-1a",
+   "rtt_avg_ms": 0.22,
+   "rtt_min_ms": 0.08,
+   "rtt_max_ms": 2.429,
+   "rtt_mdev_ms": 0.086,
+   "loss_pct": 0.0,
+   "gbps_1_stream": 9.529,
+   "gbps_8_streams": 12.41,
+   "retransmits_1": 167,
+   "retransmits_8": 14419
+  },
+  {
+   "pair": "spread-a -> spread-c",
+   "placement": "spread group, other AZ",
+   "src_az": "us-east-1a",
+   "dst_az": "us-east-1b",
+   "rtt_avg_ms": 0.494,
+   "rtt_min_ms": 0.36,
+   "rtt_max_ms": 2.264,
+   "rtt_mdev_ms": 0.092,
+   "loss_pct": 0.0,
+   "gbps_1_stream": 4.965,
+   "gbps_8_streams": 12.409,
+   "retransmits_1": 0,
+   "retransmits_8": 26630
+  }
+ ]
+}

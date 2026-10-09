@@ -1,0 +1,47 @@
+waiting for catsim-graviton-131721 (6c382b71-5eac-4d02-a178-412e8208bd94) ...
+  13:29:39  SUCCEEDED  SUCCEEDED=40
+{
+ "arch": "graviton",
+ "job_id": "6c382b71-5eac-4d02-a178-412e8208bd94",
+ "status": "SUCCEEDED",
+ "children": 40,
+ "succeeded": 40,
+ "retried_children": [],
+ "wall_clock_s": 236.2,
+ "submit_to_first_start_s": 65.8,
+ "container_seconds_total": 1690.3,
+ "child_years_per_second_avg": 1466.5,
+ "container_archs": [
+  "aarch64"
+ ],
+ "instance_types": [
+  "c7g.4xlarge",
+  "m6g.large"
+ ],
+ "instance_seconds_total": 1489,
+ "est_spot_cost_usd": 0.0315,
+ "answer": {
+  "years": 2400000,
+  "gross_aal_rand": 219218281,
+  "net_aal_rand": 174728049,
+  "gross_total_rand": 526123874771320,
+  "net_total_rand": 419347317776551,
+  "max_year_gross_rand": 7620147847,
+  "one_in_200_gross_rand": 1920000000,
+  "years_over": {
+   "250000000": 647045,
+   "500000000": 247514,
+   "1000000000": 63929,
+   "2000000000": 10526
+  },
+  "digest": "0cb96b0f9d9c5303"
+ },
+ "same_as_spot_job": null
+}
+  instance i-06a4e529a5ff83018 m6g.large  spot      us-east-1b terminated    250 s  ~US$0.00273
+  instance i-02284add31dc81d2d m6g.large  spot      us-east-1b terminated    250 s  ~US$0.00273
+  instance i-0ec824bf14de39aea m6g.large  spot      us-east-1b terminated    250 s  ~US$0.00273
+  instance i-0d763e2ad0931c827 m6g.large  spot      us-east-1c terminated    251 s  ~US$0.00291
+  instance i-02fe3090e45968e7d m6g.large  spot      us-east-1c terminated    251 s  ~US$0.00291
+  instance i-0a191b2c85457a0f8 c7g.4xlarge spot      us-east-1a terminated    237 s  ~US$0.01744
+RESULT batch graviton: 40/40 children, 2,400,000 years, wall clock 236.2 s (first start after 65.8 s), 0 retried, 6 instances ['c7g.4xlarge', 'm6g.large'], ~US$0.0315, digest 0cb96b0f9d9c5303

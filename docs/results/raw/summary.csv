@@ -1,0 +1,36 @@
+section,item,value
+Placement,"cluster group, same AZ: avg RTT ms / 1-stream Gbit/s / 8-stream Gbit/s",0.235 / 9.53 / 12.409
+Placement,"spread group, same AZ: avg RTT ms / 1-stream Gbit/s / 8-stream Gbit/s",0.22 / 9.529 / 12.41
+Placement,"spread group, other AZ: avg RTT ms / 1-stream Gbit/s / 8-stream Gbit/s",0.494 / 4.965 / 12.409
+Benchmark,c7a.large (x86_64): years/s 1 proc / all vCPUs / scaling,1036.0 / 2186.8 / 2.11x
+Benchmark,c7a.large: US$ per million years on-demand / Spot,0.013 / 0.0042
+Benchmark,c7g.large (aarch64): years/s 1 proc / all vCPUs / scaling,827.1 / 1658.9 / 2.01x
+Benchmark,c7g.large: US$ per million years on-demand / Spot,0.0121 / 0.0042
+Benchmark,c7i.large (x86_64): years/s 1 proc / all vCPUs / scaling,1215.1 / 1249.3 / 1.03x
+Benchmark,c7i.large: US$ per million years on-demand / Spot,0.0198 / 0.0065
+Benchmark,identical answers on every node,True
+Spot job,years / chunks / digest,None / None / None
+Spot job,notice_at,11:00:56
+Spot job,notice_says_terminate_at,2026-10-09T11:02:52Z
+Spot job,stopped_seconds_after_notice,14.8
+Spot job,stopped_at_year,620000
+Spot job,interrupted_instance,"i-0807d30feba58a351 (c6g.large, us-east-1a)"
+Spot job,rebalance_before_notice_s,1.0
+Spot job,resumed_at,11:03:50
+Spot job,resumed_from_year,620000
+Spot job,years_lost_or_repeated,0
+Spot job,gap_stop_to_resume_s,159.7
+Spot job,replacement_instance,"i-0e16b338327dd8d18 (m6g.large, us-east-1c)"
+Batch,graviton: children / wall clock s / first start s / retried,40/40 / 236.2 / 65.8 / 0
+Batch,graviton: instances / types / est. Spot cost US$,"6 / c7g.4xlarge, m6g.large / 0.0315"
+Batch,graviton: digest / same as Spot job,0cb96b0f9d9c5303 / None
+Batch,x86: children / wall clock s / first start s / retried,40/40 / 277.1 / 137.1 / 0
+Batch,x86: instances / types / est. Spot cost US$,"5 / c7a.large, m7i.4xlarge, m7i.xlarge / 0.0355"
+Batch,x86: digest / same as Spot job,0cb96b0f9d9c5303 / None
+Terraform,tf-destroy.txt,Destroy complete! Resources: 26 destroyed.
+Terraform,tf-plan-base.txt,"Plan: 26 to add, 0 to change, 0 to destroy."
+Terraform,tf-plan-batch.txt,"Plan: 9 to add, 0 to change, 0 to destroy."
+Terraform,tf-plan-bench.txt,"Plan: 3 to add, 0 to change, 0 to destroy."
+Terraform,tf-plan-jobdef.txt,"Plan: 0 to add, 1 to change, 0 to destroy."
+Terraform,tf-plan-placement.txt,"Plan: 7 to add, 0 to change, 0 to destroy."
+Terraform,tf-plan-spot.txt,"Plan: 6 to add, 0 to change, 0 to destroy."

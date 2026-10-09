@@ -1,0 +1,56 @@
+waiting for catsim-x86-133249 (8a4ef4c2-04bc-48f9-a6f4-5fa33be75538) ...
+  13:32:53  SUBMITTED  
+  13:33:25  PENDING    RUNNABLE=40
+  13:33:57  PENDING    RUNNABLE=40
+  13:34:30  PENDING    RUNNABLE=40
+  13:35:02  PENDING    RUNNABLE=40
+  13:35:34  PENDING    RUNNABLE=40
+  13:36:06  PENDING    RUNNABLE=27 RUNNING=13
+  13:36:37  PENDING    RUNNABLE=22 RUNNING=12 SUCCEEDED=6
+  13:37:10  PENDING    RUNNABLE=11 RUNNING=13 SUCCEEDED=16
+  13:37:42  SUCCEEDED  SUCCEEDED=40
+{
+ "arch": "x86",
+ "job_id": "8a4ef4c2-04bc-48f9-a6f4-5fa33be75538",
+ "status": "SUCCEEDED",
+ "children": 40,
+ "succeeded": 40,
+ "retried_children": [],
+ "wall_clock_s": 277.1,
+ "submit_to_first_start_s": 137.1,
+ "container_seconds_total": 1436.2,
+ "child_years_per_second_avg": 1749.2,
+ "container_archs": [
+  "x86_64"
+ ],
+ "instance_types": [
+  "c7a.large",
+  "m7i.4xlarge",
+  "m7i.xlarge"
+ ],
+ "instance_seconds_total": 1267,
+ "est_spot_cost_usd": 0.0355,
+ "answer": {
+  "years": 2400000,
+  "gross_aal_rand": 219218281,
+  "net_aal_rand": 174728049,
+  "gross_total_rand": 526123874771320,
+  "net_total_rand": 419347317776551,
+  "max_year_gross_rand": 7620147847,
+  "one_in_200_gross_rand": 1920000000,
+  "years_over": {
+   "250000000": 647045,
+   "500000000": 247514,
+   "1000000000": 63929,
+   "2000000000": 10526
+  },
+  "digest": "0cb96b0f9d9c5303"
+ },
+ "same_as_spot_job": null
+}
+  instance i-0e4281d28883e6e20 c7a.large  spot      us-east-1b shutting-down   255 s  ~US$0.00256
+  instance i-016a5173b5b82107e c7a.large  spot      us-east-1b shutting-down   255 s  ~US$0.00256
+  instance i-016ee9f93671c6021 c7a.large  spot      us-east-1b shutting-down   255 s  ~US$0.00256
+  instance i-0b9250f547320dbed m7i.4xlarge spot      us-east-1a shutting-down   246 s  ~US$0.02168
+  instance i-01a0a94e94a755085 m7i.xlarge spot      us-east-1c shutting-down   256 s  ~US$0.0061
+RESULT batch x86: 40/40 children, 2,400,000 years, wall clock 277.1 s (first start after 137.1 s), 0 retried, 5 instances ['c7a.large', 'm7i.4xlarge', 'm7i.xlarge'], ~US$0.0355, digest 0cb96b0f9d9c5303

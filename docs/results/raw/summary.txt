@@ -1,0 +1,47 @@
+
+Placement
+  cluster group, same AZ: avg RTT ms / 1-stream Gbit/s / 8-stream Gbit/s  0.235 / 9.53 / 12.409
+  spread group, same AZ: avg RTT ms / 1-stream Gbit/s / 8-stream Gbit/s   0.22 / 9.529 / 12.41
+  spread group, other AZ: avg RTT ms / 1-stream Gbit/s / 8-stream Gbit/s  0.494 / 4.965 / 12.409
+
+Benchmark
+  c7a.large (x86_64): years/s 1 proc / all vCPUs / scaling                1036.0 / 2186.8 / 2.11x
+  c7a.large: US$ per million years on-demand / Spot                       0.013 / 0.0042
+  c7g.large (aarch64): years/s 1 proc / all vCPUs / scaling               827.1 / 1658.9 / 2.01x
+  c7g.large: US$ per million years on-demand / Spot                       0.0121 / 0.0042
+  c7i.large (x86_64): years/s 1 proc / all vCPUs / scaling                1215.1 / 1249.3 / 1.03x
+  c7i.large: US$ per million years on-demand / Spot                       0.0198 / 0.0065
+  identical answers on every node                                         True
+
+Spot job
+  years / chunks / digest                                                 None / None / None
+  notice_at                                                               11:00:56
+  notice_says_terminate_at                                                2026-10-09T11:02:52Z
+  stopped_seconds_after_notice                                            14.8
+  stopped_at_year                                                         620000
+  interrupted_instance                                                    i-0807d30feba58a351 (c6g.large, us-east-1a)
+  rebalance_before_notice_s                                               1.0
+  resumed_at                                                              11:03:50
+  resumed_from_year                                                       620000
+  years_lost_or_repeated                                                  0
+  gap_stop_to_resume_s                                                    159.7
+  replacement_instance                                                    i-0e16b338327dd8d18 (m6g.large, us-east-1c)
+
+Batch
+  graviton: children / wall clock s / first start s / retried             40/40 / 236.2 / 65.8 / 0
+  graviton: instances / types / est. Spot cost US$                        6 / c7g.4xlarge, m6g.large / 0.0315
+  graviton: digest / same as Spot job                                     0cb96b0f9d9c5303 / None
+  x86: children / wall clock s / first start s / retried                  40/40 / 277.1 / 137.1 / 0
+  x86: instances / types / est. Spot cost US$                             5 / c7a.large, m7i.4xlarge, m7i.xlarge / 0.0355
+  x86: digest / same as Spot job                                          0cb96b0f9d9c5303 / None
+
+Terraform
+  tf-destroy.txt                                                          Destroy complete! Resources: 26 destroyed.
+  tf-plan-base.txt                                                        Plan: 26 to add, 0 to change, 0 to destroy.
+  tf-plan-batch.txt                                                       Plan: 9 to add, 0 to change, 0 to destroy.
+  tf-plan-bench.txt                                                       Plan: 3 to add, 0 to change, 0 to destroy.
+  tf-plan-jobdef.txt                                                      Plan: 0 to add, 1 to change, 0 to destroy.
+  tf-plan-placement.txt                                                   Plan: 7 to add, 0 to change, 0 to destroy.
+  tf-plan-spot.txt                                                        Plan: 6 to add, 0 to change, 0 to destroy.
+
+written: build/results/summary.csv

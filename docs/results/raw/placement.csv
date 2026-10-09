@@ -1,0 +1,4 @@
+pair,placement,src_az,dst_az,rtt_avg_ms,rtt_min_ms,rtt_max_ms,rtt_mdev_ms,loss_pct,gbps_1_stream,gbps_8_streams,retransmits_1,retransmits_8
+cluster-a -> cluster-b,"cluster group, same AZ",us-east-1a,us-east-1a,0.235,0.07,1.715,0.063,0.0,9.53,12.409,174,24013
+spread-a -> spread-b,"spread group, same AZ",us-east-1a,us-east-1a,0.22,0.08,2.429,0.086,0.0,9.529,12.41,167,14419
+spread-a -> spread-c,"spread group, other AZ",us-east-1a,us-east-1b,0.494,0.36,2.264,0.092,0.0,4.965,12.409,0,26630

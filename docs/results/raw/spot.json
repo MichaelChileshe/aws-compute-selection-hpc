@@ -1,0 +1,104 @@
+{
+ "result": null,
+ "timeline": {
+  "notice_at": "11:00:56",
+  "notice_says_terminate_at": "2026-10-09T11:02:52Z",
+  "stopped_seconds_after_notice": 14.8,
+  "stopped_at_year": 620000,
+  "interrupted_instance": "i-0807d30feba58a351 (c6g.large, us-east-1a)",
+  "rebalance_before_notice_s": 1.0,
+  "resumed_at": "11:03:50",
+  "resumed_from_year": 620000,
+  "years_lost_or_repeated": 0,
+  "gap_stop_to_resume_s": 159.7,
+  "replacement_instance": "i-0e16b338327dd8d18 (m6g.large, us-east-1c)"
+ },
+ "events": [
+  {
+   "at": 1791543094.048,
+   "az": "us-east-1a",
+   "chunk": 20000,
+   "event": "started",
+   "instance": "i-0807d30feba58a351",
+   "lifecycle": "spot",
+   "type": "c6g.large",
+   "years": 2400000
+  },
+  {
+   "at": 1791543655.125,
+   "az": "us-east-1a",
+   "body": {
+    "noticeTime": "2026-10-09T11:00:52Z"
+   },
+   "event": "rebalance-recommendation",
+   "instance": "i-0807d30feba58a351",
+   "lifecycle": "spot",
+   "type": "c6g.large"
+  },
+  {
+   "at": 1791543656.132,
+   "az": "us-east-1a",
+   "body": {
+    "action": "terminate",
+    "time": "2026-10-09T11:02:52Z"
+   },
+   "event": "interruption-notice",
+   "instance": "i-0807d30feba58a351",
+   "lifecycle": "spot",
+   "type": "c6g.large"
+  },
+  {
+   "at": 1791543670.89,
+   "az": "us-east-1a",
+   "chunks_done": 31,
+   "event": "stopped-for-interruption",
+   "instance": "i-0807d30feba58a351",
+   "lifecycle": "spot",
+   "next_start": 620000,
+   "seconds_after_notice": 14.8,
+   "type": "c6g.large"
+  },
+  {
+   "at": 1791543830.592,
+   "az": "us-east-1c",
+   "checkpoint_by": "i-0807d30feba58a351",
+   "checkpoint_saved_at": 1791543670.285,
+   "chunks_done": 31,
+   "event": "resumed",
+   "from_year": 620000,
+   "instance": "i-0e16b338327dd8d18",
+   "lifecycle": "spot",
+   "type": "m6g.large"
+  }
+ ],
+ "asg_activities": [
+  {
+   "start": "2026-10-09T10:51:19.723000+00:00",
+   "end": "2026-10-09T10:51:24+00:00",
+   "status": "Successful",
+   "what": "Launching a new EC2 instance: i-0807d30feba58a351",
+   "cause": "At 2026-10-09T10:51:14Z a user request created an AutoScalingGroup changing the desired capacity from 0 to 1.  At 2026-10-09T10:51:15Z an instance was started in response to a difference between desired and actual capaci"
+  },
+  {
+   "start": "2026-10-09T11:03:21.253000+00:00",
+   "end": "2026-10-09T11:03:22+00:00",
+   "status": "Successful",
+   "what": "Terminating EC2 instance: i-0807d30feba58a351",
+   "cause": "At 2026-10-09T11:03:21Z an instance was taken out of service in response to an EC2 health check indicating it has been terminated or stopped."
+  },
+  {
+   "start": "2026-10-09T11:03:24.540000+00:00",
+   "end": "2026-10-09T11:03:24+00:00",
+   "status": "Failed",
+   "what": "Launching a new EC2 instance.  Status Reason: Could not launch Spot Instances. InsufficientInstanceCapacity - There is no Spot capacity available that matches your request. Launching EC2 instance failed.",
+   "cause": "At 2026-10-09T11:03:21Z an instance was launched in response to an unhealthy instance needing to be replaced."
+  },
+  {
+   "start": "2026-10-09T11:03:33.557000+00:00",
+   "end": "2026-10-09T11:03:38+00:00",
+   "status": "Successful",
+   "what": "Launching a new EC2 instance: i-0e16b338327dd8d18",
+   "cause": "At 2026-10-09T11:03:30Z an instance was started in response to a difference between desired and actual capacity, increasing the capacity from 0 to 1."
+  }
+ ]
+}

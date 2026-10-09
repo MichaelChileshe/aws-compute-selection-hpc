@@ -1,0 +1,10 @@
+utc,source,what,instance,type,az,detail
+10:51:19,auto scaling,Successful,,,,Launching a new EC2 instance: i-0807d30feba58a351
+10:51:34,worker,started,i-0807d30feba58a351,c6g.large,us-east-1a,"{""chunk"": 20000, ""years"": 2400000}"
+11:00:55,worker,rebalance-recommendation,i-0807d30feba58a351,c6g.large,us-east-1a,"{""body"": {""noticeTime"": ""2026-10-09T11:00:52Z""}}"
+11:00:56,worker,interruption-notice,i-0807d30feba58a351,c6g.large,us-east-1a,"{""body"": {""action"": ""terminate"", ""time"": ""2026-10-09T11:02:52Z""}}"
+11:01:10,worker,stopped-for-interruption,i-0807d30feba58a351,c6g.large,us-east-1a,"{""chunks_done"": 31, ""next_start"": 620000, ""seconds_after_notice"": 14.8}"
+11:03:21,auto scaling,Successful,,,,Terminating EC2 instance: i-0807d30feba58a351
+11:03:24,auto scaling,Failed,,,,Launching a new EC2 instance.  Status Reason: Could not launch Spot Instances. InsufficientInstanceCapacity - There is no Spot capacity available that matches your request. Launching EC2 instance failed.
+11:03:33,auto scaling,Successful,,,,Launching a new EC2 instance: i-0e16b338327dd8d18
+11:03:50,worker,resumed,i-0e16b338327dd8d18,m6g.large,us-east-1c,"{""checkpoint_by"": ""i-0807d30feba58a351"", ""checkpoint_saved_at"": 1791543670.285, ""chunks_done"": 31, ""from_year"": 620000}"

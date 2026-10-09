@@ -1,0 +1,562 @@
+data.aws_ssm_parameter.al2023_arm: Reading...
+data.aws_ssm_parameter.al2023_x86: Reading...
+data.aws_caller_identity.current: Reading...
+aws_vpc.lab: Refreshing state... [id=vpc-038a90126b39de9d9]
+aws_iam_role.node: Refreshing state... [id=themba-hpc-node-role]
+data.aws_caller_identity.current: Read complete after 1s [id=<account-id>]
+aws_s3_bucket.hpc: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+data.aws_ssm_parameter.al2023_arm: Read complete after 2s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64]
+data.aws_ssm_parameter.al2023_x86: Read complete after 2s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64]
+aws_iam_role_policy_attachment.node_ssm: Refreshing state... [id=themba-hpc-node-role/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore]
+aws_iam_instance_profile.node: Refreshing state... [id=themba-hpc-node-profile]
+aws_internet_gateway.lab: Refreshing state... [id=igw-0f6bc15f6a778c9bf]
+aws_route_table.public: Refreshing state... [id=rtb-002ff2fc90495612c]
+aws_subnet.public[0]: Refreshing state... [id=subnet-0c18167b5f894deb0]
+aws_security_group.nodes: Refreshing state... [id=sg-0e916eedb652eec2b]
+aws_subnet.public[2]: Refreshing state... [id=subnet-03506c1c182dbef29]
+aws_subnet.public[1]: Refreshing state... [id=subnet-0a69a00270b5fbd2b]
+aws_vpc_endpoint.s3: Refreshing state... [id=vpce-01b697b1c9985b5c4]
+aws_route.internet: Refreshing state... [id=r-rtb-002ff2fc90495612c1080289494]
+aws_vpc_security_group_egress_rule.all: Refreshing state... [id=sgr-03220e6e610466f98]
+aws_vpc_security_group_ingress_rule.self: Refreshing state... [id=sgr-039eabae081a66555]
+aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-03c68123aa3f84a90]
+aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0c6aa112f6aa6778e]
+aws_route_table_association.public[2]: Refreshing state... [id=rtbassoc-013dd1847643b5331]
+aws_iam_role_policy.node: Refreshing state... [id=themba-hpc-node-role:code-and-spot-job]
+aws_s3_bucket_public_access_block.hpc: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+aws_s3_bucket_server_side_encryption_configuration.hpc: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+aws_s3_object.app["nettest.py"]: Refreshing state... [id=themba-hpc-<account-id>-us-east-1/code/app/nettest.py]
+aws_s3_bucket_lifecycle_configuration.hpc: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+aws_s3_object.app["worker.py"]: Refreshing state... [id=themba-hpc-<account-id>-us-east-1/code/app/worker.py]
+aws_s3_object.app["catsim.py"]: Refreshing state... [id=themba-hpc-<account-id>-us-east-1/code/app/catsim.py]
+aws_s3_bucket_policy.tls_only: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.bench["amd"] will be created
+  + resource "aws_instance" "bench" {
+      + ami                                  = "ami-0d27e0fb3bac4d724"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "themba-hpc-node-profile"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "c7a.large"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "us-east-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = "subnet-0c18167b5f894deb0"
+      + tags                                 = {
+          + "Name" = "themba-bench-amd"
+        }
+      + tags_all                             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "themba-bench-amd"
+          + "Project"   = "aws-compute-selection-hpc"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for every Themba HPC lab node (rendered by Terraform). Same base for all:
+            # settings file, the tool code from S3, the catsim command. Then one extra per role:
+            #   placement  iperf3, with a server listening for the other nodes' tests
+            #   bench      nothing extra
+            #   spot       catsim-worker as a service: it starts (or resumes) the Spot job at boot
+            set -euxo pipefail
+            mkdir -p /opt/themba-hpc
+            
+            cat > /etc/themba-hpc.conf <<'CONF'
+            REGION=us-east-1
+            BUCKET=themba-hpc-<account-id>-us-east-1
+            ROLE=bench
+            CONF
+            chmod 644 /etc/themba-hpc.conf
+            
+            # themba-sync: copy the tool code from S3 and print each file's SHA-256 (compare with terraform output app_sha256).
+            cat > /usr/local/bin/themba-sync <<'SYNC'
+            #!/bin/bash
+            set -euo pipefail
+            aws s3 cp --recursive --only-show-errors --region us-east-1 s3://themba-hpc-<account-id>-us-east-1/code/app/ /opt/themba-hpc/
+            cd /opt/themba-hpc && sha256sum -- *.py
+            SYNC
+            chmod 755 /usr/local/bin/themba-sync
+            # The instance role can take a few seconds to be usable after launch: retry for up to 5 minutes.
+            for i in $(seq 1 20); do /usr/local/bin/themba-sync && break; echo "code not reachable yet (attempt $i), retrying in 15 s"; sleep 15; done
+            test -f /opt/themba-hpc/catsim.py
+            
+            # The model uses the system Python 3 (no packages needed: standard library only).
+            printf '#!/bin/bash\ncd /opt/themba-hpc && exec python3 -u /opt/themba-hpc/catsim.py "$@"\n' > /usr/local/bin/catsim
+            chmod 755 /usr/local/bin/catsim
+            
+            if [ "bench" = "placement" ]; then
+              dnf install -y iperf3
+              cat > /etc/systemd/system/iperf3-server.service <<'UNIT'
+            [Unit]
+            Description=iperf3 server for the placement group network tests
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/iperf3 --server
+            Restart=always
+            UNIT
+              systemctl daemon-reload
+              systemctl enable --now iperf3-server
+            fi
+            
+            if [ "bench" = "spot" ]; then
+              cat > /etc/systemd/system/catsim-worker.service <<'UNIT'
+            [Unit]
+            Description=Themba catastrophe model, checkpointing Spot worker
+            After=network-online.target
+            
+            [Service]
+            WorkingDirectory=/opt/themba-hpc
+            ExecStart=/usr/bin/python3 -u /opt/themba-hpc/worker.py
+            Restart=on-failure
+            RestartSec=10
+            UNIT
+              systemctl daemon-reload
+              systemctl enable --now catsim-worker
+            fi
+            
+            python3 -c "import sys, platform; print('python', sys.version.split()[0], platform.machine())"
+            echo "themba-hpc node ready (bench)"
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = [
+          + "sg-0e916eedb652eec2b",
+        ]
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = "gp3"
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # aws_instance.bench["graviton"] will be created
+  + resource "aws_instance" "bench" {
+      + ami                                  = "ami-065b1b834d2a83a7a"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "themba-hpc-node-profile"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "c7g.large"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "us-east-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = "subnet-0c18167b5f894deb0"
+      + tags                                 = {
+          + "Name" = "themba-bench-graviton"
+        }
+      + tags_all                             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "themba-bench-graviton"
+          + "Project"   = "aws-compute-selection-hpc"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for every Themba HPC lab node (rendered by Terraform). Same base for all:
+            # settings file, the tool code from S3, the catsim command. Then one extra per role:
+            #   placement  iperf3, with a server listening for the other nodes' tests
+            #   bench      nothing extra
+            #   spot       catsim-worker as a service: it starts (or resumes) the Spot job at boot
+            set -euxo pipefail
+            mkdir -p /opt/themba-hpc
+            
+            cat > /etc/themba-hpc.conf <<'CONF'
+            REGION=us-east-1
+            BUCKET=themba-hpc-<account-id>-us-east-1
+            ROLE=bench
+            CONF
+            chmod 644 /etc/themba-hpc.conf
+            
+            # themba-sync: copy the tool code from S3 and print each file's SHA-256 (compare with terraform output app_sha256).
+            cat > /usr/local/bin/themba-sync <<'SYNC'
+            #!/bin/bash
+            set -euo pipefail
+            aws s3 cp --recursive --only-show-errors --region us-east-1 s3://themba-hpc-<account-id>-us-east-1/code/app/ /opt/themba-hpc/
+            cd /opt/themba-hpc && sha256sum -- *.py
+            SYNC
+            chmod 755 /usr/local/bin/themba-sync
+            # The instance role can take a few seconds to be usable after launch: retry for up to 5 minutes.
+            for i in $(seq 1 20); do /usr/local/bin/themba-sync && break; echo "code not reachable yet (attempt $i), retrying in 15 s"; sleep 15; done
+            test -f /opt/themba-hpc/catsim.py
+            
+            # The model uses the system Python 3 (no packages needed: standard library only).
+            printf '#!/bin/bash\ncd /opt/themba-hpc && exec python3 -u /opt/themba-hpc/catsim.py "$@"\n' > /usr/local/bin/catsim
+            chmod 755 /usr/local/bin/catsim
+            
+            if [ "bench" = "placement" ]; then
+              dnf install -y iperf3
+              cat > /etc/systemd/system/iperf3-server.service <<'UNIT'
+            [Unit]
+            Description=iperf3 server for the placement group network tests
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/iperf3 --server
+            Restart=always
+            UNIT
+              systemctl daemon-reload
+              systemctl enable --now iperf3-server
+            fi
+            
+            if [ "bench" = "spot" ]; then
+              cat > /etc/systemd/system/catsim-worker.service <<'UNIT'
+            [Unit]
+            Description=Themba catastrophe model, checkpointing Spot worker
+            After=network-online.target
+            
+            [Service]
+            WorkingDirectory=/opt/themba-hpc
+            ExecStart=/usr/bin/python3 -u /opt/themba-hpc/worker.py
+            Restart=on-failure
+            RestartSec=10
+            UNIT
+              systemctl daemon-reload
+              systemctl enable --now catsim-worker
+            fi
+            
+            python3 -c "import sys, platform; print('python', sys.version.split()[0], platform.machine())"
+            echo "themba-hpc node ready (bench)"
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = [
+          + "sg-0e916eedb652eec2b",
+        ]
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = "gp3"
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # aws_instance.bench["intel"] will be created
+  + resource "aws_instance" "bench" {
+      + ami                                  = "ami-0d27e0fb3bac4d724"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "themba-hpc-node-profile"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "c7i.large"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "us-east-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = "subnet-0c18167b5f894deb0"
+      + tags                                 = {
+          + "Name" = "themba-bench-intel"
+        }
+      + tags_all                             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "themba-bench-intel"
+          + "Project"   = "aws-compute-selection-hpc"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for every Themba HPC lab node (rendered by Terraform). Same base for all:
+            # settings file, the tool code from S3, the catsim command. Then one extra per role:
+            #   placement  iperf3, with a server listening for the other nodes' tests
+            #   bench      nothing extra
+            #   spot       catsim-worker as a service: it starts (or resumes) the Spot job at boot
+            set -euxo pipefail
+            mkdir -p /opt/themba-hpc
+            
+            cat > /etc/themba-hpc.conf <<'CONF'
+            REGION=us-east-1
+            BUCKET=themba-hpc-<account-id>-us-east-1
+            ROLE=bench
+            CONF
+            chmod 644 /etc/themba-hpc.conf
+            
+            # themba-sync: copy the tool code from S3 and print each file's SHA-256 (compare with terraform output app_sha256).
+            cat > /usr/local/bin/themba-sync <<'SYNC'
+            #!/bin/bash
+            set -euo pipefail
+            aws s3 cp --recursive --only-show-errors --region us-east-1 s3://themba-hpc-<account-id>-us-east-1/code/app/ /opt/themba-hpc/
+            cd /opt/themba-hpc && sha256sum -- *.py
+            SYNC
+            chmod 755 /usr/local/bin/themba-sync
+            # The instance role can take a few seconds to be usable after launch: retry for up to 5 minutes.
+            for i in $(seq 1 20); do /usr/local/bin/themba-sync && break; echo "code not reachable yet (attempt $i), retrying in 15 s"; sleep 15; done
+            test -f /opt/themba-hpc/catsim.py
+            
+            # The model uses the system Python 3 (no packages needed: standard library only).
+            printf '#!/bin/bash\ncd /opt/themba-hpc && exec python3 -u /opt/themba-hpc/catsim.py "$@"\n' > /usr/local/bin/catsim
+            chmod 755 /usr/local/bin/catsim
+            
+            if [ "bench" = "placement" ]; then
+              dnf install -y iperf3
+              cat > /etc/systemd/system/iperf3-server.service <<'UNIT'
+            [Unit]
+            Description=iperf3 server for the placement group network tests
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/iperf3 --server
+            Restart=always
+            UNIT
+              systemctl daemon-reload
+              systemctl enable --now iperf3-server
+            fi
+            
+            if [ "bench" = "spot" ]; then
+              cat > /etc/systemd/system/catsim-worker.service <<'UNIT'
+            [Unit]
+            Description=Themba catastrophe model, checkpointing Spot worker
+            After=network-online.target
+            
+            [Service]
+            WorkingDirectory=/opt/themba-hpc
+            ExecStart=/usr/bin/python3 -u /opt/themba-hpc/worker.py
+            Restart=on-failure
+            RestartSec=10
+            UNIT
+              systemctl daemon-reload
+              systemctl enable --now catsim-worker
+            fi
+            
+            python3 -c "import sys, platform; print('python', sys.version.split()[0], platform.machine())"
+            echo "themba-hpc node ready (bench)"
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = [
+          + "sg-0e916eedb652eec2b",
+        ]
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = "gp3"
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+Plan: 3 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  ~ bench_nodes          = {
+      + amd      = {
+          + id   = (known after apply)
+          + type = "c7a.large"
+        }
+      + graviton = {
+          + id   = (known after apply)
+          + type = "c7g.large"
+        }
+      + intel    = {
+          + id   = (known after apply)
+          + type = "c7i.large"
+        }
+    }
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: bench.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "bench.tfplan"
+Releasing state lock. This may take a few moments...

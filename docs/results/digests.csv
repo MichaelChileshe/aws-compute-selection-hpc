@@ -1,0 +1,10 @@
+years,where,how,python,digest
+60000,c7a.large (x86_64),1 process and 2 processes,3.9.25,07394c4b0c9564a3
+60000,c7g.large (aarch64),1 process and 2 processes,3.9.25,07394c4b0c9564a3
+60000,c7i.large (x86_64),1 process and 2 processes,3.9.25,07394c4b0c9564a3
+60000,"my laptop (WSL, x86_64)",8 processes,3.14.4,07394c4b0c9564a3
+4000,my laptop,"one run of 4,000 years",3.14.4,78a9364c876e456c
+4000,my laptop,"two halves of 2,000 merged",3.14.4,78a9364c876e456c
+2400000,AWS Batch graviton Spot,"40 children x 60,000, merged",3.9 (container),0cb96b0f9d9c5303
+2400000,AWS Batch x86 Spot,"40 children x 60,000, merged",3.9 (container),0cb96b0f9d9c5303
+2400000,my laptop,"years 0-619,999 + 620,000-2,399,999 merged (the Spot interruption point)",3.14.4,0cb96b0f9d9c5303

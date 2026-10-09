@@ -1,0 +1,493 @@
+{
+ "arch": "x86",
+ "job_id": "8a4ef4c2-04bc-48f9-a6f4-5fa33be75538",
+ "status": "SUCCEEDED",
+ "children": 40,
+ "succeeded": 40,
+ "retried_children": [],
+ "wall_clock_s": 277.1,
+ "submit_to_first_start_s": 137.1,
+ "container_seconds_total": 1436.2,
+ "child_years_per_second_avg": 1749.2,
+ "container_archs": [
+  "x86_64"
+ ],
+ "instances": [
+  {
+   "id": "i-0e4281d28883e6e20",
+   "type": "c7a.large",
+   "lifecycle": "spot",
+   "az": "us-east-1b",
+   "state": "shutting-down",
+   "seconds": 255,
+   "spot_usd_hr_now": 0.0362,
+   "est_usd": 0.00256
+  },
+  {
+   "id": "i-016a5173b5b82107e",
+   "type": "c7a.large",
+   "lifecycle": "spot",
+   "az": "us-east-1b",
+   "state": "shutting-down",
+   "seconds": 255,
+   "spot_usd_hr_now": 0.0362,
+   "est_usd": 0.00256
+  },
+  {
+   "id": "i-016ee9f93671c6021",
+   "type": "c7a.large",
+   "lifecycle": "spot",
+   "az": "us-east-1b",
+   "state": "shutting-down",
+   "seconds": 255,
+   "spot_usd_hr_now": 0.0362,
+   "est_usd": 0.00256
+  },
+  {
+   "id": "i-0b9250f547320dbed",
+   "type": "m7i.4xlarge",
+   "lifecycle": "spot",
+   "az": "us-east-1a",
+   "state": "shutting-down",
+   "seconds": 246,
+   "spot_usd_hr_now": 0.3173,
+   "est_usd": 0.02168
+  },
+  {
+   "id": "i-01a0a94e94a755085",
+   "type": "m7i.xlarge",
+   "lifecycle": "spot",
+   "az": "us-east-1c",
+   "state": "shutting-down",
+   "seconds": 256,
+   "spot_usd_hr_now": 0.0858,
+   "est_usd": 0.0061
+  }
+ ],
+ "instance_types": [
+  "c7a.large",
+  "m7i.4xlarge",
+  "m7i.xlarge"
+ ],
+ "instance_seconds_total": 1267,
+ "est_spot_cost_usd": 0.0355,
+ "answer": {
+  "years": 2400000,
+  "gross_aal_rand": 219218281,
+  "net_aal_rand": 174728049,
+  "gross_total_rand": 526123874771320,
+  "net_total_rand": 419347317776551,
+  "max_year_gross_rand": 7620147847,
+  "one_in_200_gross_rand": 1920000000,
+  "years_over": {
+   "250000000": 647045,
+   "500000000": 247514,
+   "1000000000": 63929,
+   "2000000000": 10526
+  },
+  "digest": "0cb96b0f9d9c5303"
+ },
+ "same_as_spot_job": null,
+ "per_child": [
+  {
+   "index": 0,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 0,
+   "seconds": 43.24,
+   "years_per_second": 1387.7,
+   "arch": "x86_64",
+   "run_s": 43.5
+  },
+  {
+   "index": 1,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 60000,
+   "seconds": 28.76,
+   "years_per_second": 2086.0,
+   "arch": "x86_64",
+   "run_s": 28.9
+  },
+  {
+   "index": 2,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 120000,
+   "seconds": 29.07,
+   "years_per_second": 2063.8,
+   "arch": "x86_64",
+   "run_s": 29.2
+  },
+  {
+   "index": 3,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 180000,
+   "seconds": 29.76,
+   "years_per_second": 2016.2,
+   "arch": "x86_64",
+   "run_s": 29.9
+  },
+  {
+   "index": 4,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 240000,
+   "seconds": 41.15,
+   "years_per_second": 1458.1,
+   "arch": "x86_64",
+   "run_s": 41.7
+  },
+  {
+   "index": 5,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 300000,
+   "seconds": 41.0,
+   "years_per_second": 1463.5,
+   "arch": "x86_64",
+   "run_s": 41.7
+  },
+  {
+   "index": 6,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 360000,
+   "seconds": 41.19,
+   "years_per_second": 1456.7,
+   "arch": "x86_64",
+   "run_s": 41.7
+  },
+  {
+   "index": 7,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 420000,
+   "seconds": 43.55,
+   "years_per_second": 1377.7,
+   "arch": "x86_64",
+   "run_s": 43.7
+  },
+  {
+   "index": 8,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 480000,
+   "seconds": 40.92,
+   "years_per_second": 1466.4,
+   "arch": "x86_64",
+   "run_s": 41.8
+  },
+  {
+   "index": 9,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 540000,
+   "seconds": 40.85,
+   "years_per_second": 1468.7,
+   "arch": "x86_64",
+   "run_s": 41.7
+  },
+  {
+   "index": 10,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 600000,
+   "seconds": 41.01,
+   "years_per_second": 1463.0,
+   "arch": "x86_64",
+   "run_s": 41.7
+  },
+  {
+   "index": 11,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 660000,
+   "seconds": 26.77,
+   "years_per_second": 2241.6,
+   "arch": "x86_64",
+   "run_s": 26.9
+  },
+  {
+   "index": 12,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 720000,
+   "seconds": 40.85,
+   "years_per_second": 1468.8,
+   "arch": "x86_64",
+   "run_s": 41.7
+  },
+  {
+   "index": 13,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 780000,
+   "seconds": 26.62,
+   "years_per_second": 2253.5,
+   "arch": "x86_64",
+   "run_s": 26.8
+  },
+  {
+   "index": 14,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 840000,
+   "seconds": 26.64,
+   "years_per_second": 2251.9,
+   "arch": "x86_64",
+   "run_s": 26.8
+  },
+  {
+   "index": 15,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 900000,
+   "seconds": 41.28,
+   "years_per_second": 1453.6,
+   "arch": "x86_64",
+   "run_s": 41.7
+  },
+  {
+   "index": 16,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 960000,
+   "seconds": 41.45,
+   "years_per_second": 1447.6,
+   "arch": "x86_64",
+   "run_s": 41.7
+  },
+  {
+   "index": 17,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1020000,
+   "seconds": 41.44,
+   "years_per_second": 1447.9,
+   "arch": "x86_64",
+   "run_s": 41.7
+  },
+  {
+   "index": 18,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1080000,
+   "seconds": 26.78,
+   "years_per_second": 2240.6,
+   "arch": "x86_64",
+   "run_s": 27.0
+  },
+  {
+   "index": 19,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1140000,
+   "seconds": 26.58,
+   "years_per_second": 2257.7,
+   "arch": "x86_64",
+   "run_s": 26.8
+  },
+  {
+   "index": 20,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1200000,
+   "seconds": 27.9,
+   "years_per_second": 2150.8,
+   "arch": "x86_64",
+   "run_s": 28.1
+  },
+  {
+   "index": 21,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1260000,
+   "seconds": 40.56,
+   "years_per_second": 1479.4,
+   "arch": "x86_64",
+   "run_s": 41.6
+  },
+  {
+   "index": 22,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1320000,
+   "seconds": 40.74,
+   "years_per_second": 1472.8,
+   "arch": "x86_64",
+   "run_s": 41.5
+  },
+  {
+   "index": 23,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1380000,
+   "seconds": 40.95,
+   "years_per_second": 1465.2,
+   "arch": "x86_64",
+   "run_s": 41.6
+  },
+  {
+   "index": 24,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1440000,
+   "seconds": 40.92,
+   "years_per_second": 1466.3,
+   "arch": "x86_64",
+   "run_s": 41.5
+  },
+  {
+   "index": 25,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1500000,
+   "seconds": 41.04,
+   "years_per_second": 1461.8,
+   "arch": "x86_64",
+   "run_s": 41.6
+  },
+  {
+   "index": 26,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1560000,
+   "seconds": 40.96,
+   "years_per_second": 1464.8,
+   "arch": "x86_64",
+   "run_s": 41.6
+  },
+  {
+   "index": 27,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1620000,
+   "seconds": 27.37,
+   "years_per_second": 2191.8,
+   "arch": "x86_64",
+   "run_s": 27.5
+  },
+  {
+   "index": 28,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1680000,
+   "seconds": 41.0,
+   "years_per_second": 1463.4,
+   "arch": "x86_64",
+   "run_s": 41.5
+  },
+  {
+   "index": 29,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1740000,
+   "seconds": 26.57,
+   "years_per_second": 2258.4,
+   "arch": "x86_64",
+   "run_s": 26.7
+  },
+  {
+   "index": 30,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1800000,
+   "seconds": 41.77,
+   "years_per_second": 1436.6,
+   "arch": "x86_64",
+   "run_s": 42.0
+  },
+  {
+   "index": 31,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1860000,
+   "seconds": 40.14,
+   "years_per_second": 1494.8,
+   "arch": "x86_64",
+   "run_s": 40.3
+  },
+  {
+   "index": 32,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1920000,
+   "seconds": 41.64,
+   "years_per_second": 1441.0,
+   "arch": "x86_64",
+   "run_s": 41.8
+  },
+  {
+   "index": 33,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 1980000,
+   "seconds": 26.4,
+   "years_per_second": 2272.9,
+   "arch": "x86_64",
+   "run_s": 26.5
+  },
+  {
+   "index": 34,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 2040000,
+   "seconds": 30.68,
+   "years_per_second": 1955.9,
+   "arch": "x86_64",
+   "run_s": 30.8
+  },
+  {
+   "index": 35,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 2100000,
+   "seconds": 30.8,
+   "years_per_second": 1948.1,
+   "arch": "x86_64",
+   "run_s": 30.9
+  },
+  {
+   "index": 36,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 2160000,
+   "seconds": 30.56,
+   "years_per_second": 1963.5,
+   "arch": "x86_64",
+   "run_s": 30.7
+  },
+  {
+   "index": 37,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 2220000,
+   "seconds": 31.2,
+   "years_per_second": 1923.4,
+   "arch": "x86_64",
+   "run_s": 31.3
+  },
+  {
+   "index": 38,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 2280000,
+   "seconds": 31.13,
+   "years_per_second": 1927.3,
+   "arch": "x86_64",
+   "run_s": 31.4
+  },
+  {
+   "index": 39,
+   "status": "SUCCEEDED",
+   "attempts": 1,
+   "start_year": 2340000,
+   "seconds": 30.61,
+   "years_per_second": 1960.2,
+   "arch": "x86_64",
+   "run_s": 30.7
+  }
+ ]
+}

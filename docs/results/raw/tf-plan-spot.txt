@@ -1,0 +1,341 @@
+data.aws_ssm_parameter.al2023_x86: Reading...
+data.aws_ssm_parameter.al2023_arm: Reading...
+data.aws_caller_identity.current: Reading...
+aws_iam_role.node: Refreshing state... [id=themba-hpc-node-role]
+aws_vpc.lab: Refreshing state... [id=vpc-038a90126b39de9d9]
+data.aws_caller_identity.current: Read complete after 0s [id=<account-id>]
+aws_s3_bucket.hpc: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+data.aws_ssm_parameter.al2023_arm: Read complete after 1s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64]
+data.aws_ssm_parameter.al2023_x86: Read complete after 1s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64]
+aws_iam_role_policy_attachment.node_ssm: Refreshing state... [id=themba-hpc-node-role/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore]
+aws_iam_instance_profile.node: Refreshing state... [id=themba-hpc-node-profile]
+aws_subnet.public[1]: Refreshing state... [id=subnet-0a69a00270b5fbd2b]
+aws_route_table.public: Refreshing state... [id=rtb-002ff2fc90495612c]
+aws_subnet.public[0]: Refreshing state... [id=subnet-0c18167b5f894deb0]
+aws_subnet.public[2]: Refreshing state... [id=subnet-03506c1c182dbef29]
+aws_security_group.nodes: Refreshing state... [id=sg-0e916eedb652eec2b]
+aws_internet_gateway.lab: Refreshing state... [id=igw-0f6bc15f6a778c9bf]
+aws_vpc_endpoint.s3: Refreshing state... [id=vpce-01b697b1c9985b5c4]
+aws_vpc_security_group_egress_rule.all: Refreshing state... [id=sgr-03220e6e610466f98]
+aws_vpc_security_group_ingress_rule.self: Refreshing state... [id=sgr-039eabae081a66555]
+aws_route.internet: Refreshing state... [id=r-rtb-002ff2fc90495612c1080289494]
+aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0c6aa112f6aa6778e]
+aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-03c68123aa3f84a90]
+aws_route_table_association.public[2]: Refreshing state... [id=rtbassoc-013dd1847643b5331]
+aws_s3_bucket_server_side_encryption_configuration.hpc: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+aws_s3_object.app["catsim.py"]: Refreshing state... [id=themba-hpc-<account-id>-us-east-1/code/app/catsim.py]
+aws_s3_bucket_public_access_block.hpc: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+aws_iam_role_policy.node: Refreshing state... [id=themba-hpc-node-role:code-and-spot-job]
+aws_s3_bucket_lifecycle_configuration.hpc: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+aws_s3_object.app["nettest.py"]: Refreshing state... [id=themba-hpc-<account-id>-us-east-1/code/app/nettest.py]
+aws_s3_object.app["worker.py"]: Refreshing state... [id=themba-hpc-<account-id>-us-east-1/code/app/worker.py]
+aws_s3_bucket_policy.tls_only: Refreshing state... [id=themba-hpc-<account-id>-us-east-1]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_autoscaling_group.spot_worker[0] will be created
+  + resource "aws_autoscaling_group" "spot_worker" {
+      + arn                              = (known after apply)
+      + availability_zones               = (known after apply)
+      + capacity_rebalance               = false
+      + default_cooldown                 = (known after apply)
+      + desired_capacity                 = 1
+      + force_delete                     = false
+      + force_delete_warm_pool           = false
+      + health_check_grace_period        = 300
+      + health_check_type                = "EC2"
+      + id                               = (known after apply)
+      + ignore_failed_scaling_activities = false
+      + load_balancers                   = (known after apply)
+      + max_size                         = 1
+      + metrics_granularity              = "1Minute"
+      + min_size                         = 1
+      + name                             = "themba-spot-worker"
+      + name_prefix                      = (known after apply)
+      + predicted_capacity               = (known after apply)
+      + protect_from_scale_in            = false
+      + region                           = "us-east-1"
+      + service_linked_role_arn          = (known after apply)
+      + target_group_arns                = (known after apply)
+      + vpc_zone_identifier              = [
+          + "subnet-03506c1c182dbef29",
+          + "subnet-0a69a00270b5fbd2b",
+          + "subnet-0c18167b5f894deb0",
+        ]
+      + wait_for_capacity_timeout        = "10m"
+      + warm_pool_size                   = (known after apply)
+
+      + availability_zone_distribution (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + instance_lifecycle_policy (known after apply)
+
+      + launch_template (known after apply)
+
+      + mixed_instances_policy {
+          + instances_distribution {
+              + on_demand_allocation_strategy            = (known after apply)
+              + on_demand_base_capacity                  = 0
+              + on_demand_percentage_above_base_capacity = 0
+              + spot_allocation_strategy                 = "price-capacity-optimized"
+              + spot_instance_pools                      = 0
+            }
+          + launch_template {
+              + launch_template_specification {
+                  + launch_template_id   = (known after apply)
+                  + launch_template_name = (known after apply)
+                  + version              = (known after apply)
+                }
+              + override {
+                  + instance_type = "c7g.large"
+                }
+              + override {
+                  + instance_type = "m7g.large"
+                }
+              + override {
+                  + instance_type = "c6g.large"
+                }
+              + override {
+                  + instance_type = "m6g.large"
+                }
+            }
+        }
+
+      + traffic_source (known after apply)
+    }
+
+  # aws_fis_experiment_template.spot_interrupt[0] will be created
+  + resource "aws_fis_experiment_template" "spot_interrupt" {
+      + description = "Interrupt the Themba Spot worker with a 2-minute notice"
+      + id          = (known after apply)
+      + region      = "us-east-1"
+      + role_arn    = (known after apply)
+      + tags        = {
+          + "Name" = "themba-spot-interrupt"
+        }
+      + tags_all    = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "themba-spot-interrupt"
+          + "Project"   = "aws-compute-selection-hpc"
+        }
+
+      + action {
+          + action_id   = "aws:ec2:send-spot-instance-interruptions"
+          + name        = "interrupt"
+          + start_after = []
+            # (1 unchanged attribute hidden)
+
+          + parameter {
+              + key   = "durationBeforeInterruption"
+              + value = "PT2M"
+            }
+
+          + target {
+              + key   = "SpotInstances"
+              + value = "spot-worker"
+            }
+        }
+
+      + experiment_options (known after apply)
+
+      + stop_condition {
+          + source = "none"
+            # (1 unchanged attribute hidden)
+        }
+
+      + target {
+          + name           = "spot-worker"
+          + resource_arns  = []
+          + resource_type  = "aws:ec2:spot-instance"
+          + selection_mode = "COUNT(1)"
+
+          + filter {
+              + path   = "State.Name"
+              + values = [
+                  + "running",
+                ]
+            }
+
+          + resource_tag {
+              + key   = "Name"
+              + value = "themba-spot-worker"
+            }
+        }
+    }
+
+  # aws_iam_role.fis[0] will be created
+  + resource "aws_iam_role" "fis" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "fis.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "themba-fis-spot-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags_all              = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-compute-selection-hpc"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role_policy.fis[0] will be created
+  + resource "aws_iam_role_policy" "fis" {
+      + id          = (known after apply)
+      + name        = "interrupt-the-spot-worker"
+      + name_prefix = (known after apply)
+      + policy      = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "ec2:SendSpotInstanceInterruptions"
+                      + Condition = {
+                          + StringEquals = {
+                              + "aws:ResourceTag/Name" = "themba-spot-worker"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Resource  = "arn:aws:ec2:us-east-1:<account-id>:instance/*"
+                      + Sid       = "InterruptTaggedSpotWorkerOnly"
+                    },
+                  + {
+                      + Action   = [
+                          + "ec2:DescribeInstances",
+                          + "tag:GetResources",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "FindTargets"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + role        = (known after apply)
+    }
+
+  # aws_launch_template.spot_worker[0] will be created
+  + resource "aws_launch_template" "spot_worker" {
+      + arn                    = (known after apply)
+      + default_version        = (known after apply)
+      + id                     = (known after apply)
+      + image_id               = "ami-065b1b834d2a83a7a"
+      + instance_type          = "c7g.large"
+      + latest_version         = (known after apply)
+      + name                   = "themba-spot-worker"
+      + name_prefix            = (known after apply)
+      + region                 = "us-east-1"
+      + tags_all               = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-compute-selection-hpc"
+        }
+      + user_data              = "IyEvYmluL2Jhc2gKIyBCb290IHNjcmlwdCBmb3IgZXZlcnkgVGhlbWJhIEhQQyBsYWIgbm9kZSAocmVuZGVyZWQgYnkgVGVycmFmb3JtKS4gU2FtZSBiYXNlIGZvciBhbGw6CiMgc2V0dGluZ3MgZmlsZSwgdGhlIHRvb2wgY29kZSBmcm9tIFMzLCB0aGUgY2F0c2ltIGNvbW1hbmQuIFRoZW4gb25lIGV4dHJhIHBlciByb2xlOgojICAgcGxhY2VtZW50ICBpcGVyZjMsIHdpdGggYSBzZXJ2ZXIgbGlzdGVuaW5nIGZvciB0aGUgb3RoZXIgbm9kZXMnIHRlc3RzCiMgICBiZW5jaCAgICAgIG5vdGhpbmcgZXh0cmEKIyAgIHNwb3QgICAgICAgY2F0c2ltLXdvcmtlciBhcyBhIHNlcnZpY2U6IGl0IHN0YXJ0cyAob3IgcmVzdW1lcykgdGhlIFNwb3Qgam9iIGF0IGJvb3QKc2V0IC1ldXhvIHBpcGVmYWlsCm1rZGlyIC1wIC9vcHQvdGhlbWJhLWhwYwoKY2F0ID4gL2V0Yy90aGVtYmEtaHBjLmNvbmYgPDwnQ09ORicKUkVHSU9OPXVzLWVhc3QtMQpCVUNLRVQ9dGhlbWJhLWhwYy03NzM0NzU4OTExMzEtdXMtZWFzdC0xClJPTEU9c3BvdApDT05GCmNobW9kIDY0NCAvZXRjL3RoZW1iYS1ocGMuY29uZgoKIyB0aGVtYmEtc3luYzogY29weSB0aGUgdG9vbCBjb2RlIGZyb20gUzMgYW5kIHByaW50IGVhY2ggZmlsZSdzIFNIQS0yNTYgKGNvbXBhcmUgd2l0aCB0ZXJyYWZvcm0gb3V0cHV0IGFwcF9zaGEyNTYpLgpjYXQgPiAvdXNyL2xvY2FsL2Jpbi90aGVtYmEtc3luYyA8PCdTWU5DJwojIS9iaW4vYmFzaApzZXQgLWV1byBwaXBlZmFpbAphd3MgczMgY3AgLS1yZWN1cnNpdmUgLS1vbmx5LXNob3ctZXJyb3JzIC0tcmVnaW9uIHVzLWVhc3QtMSBzMzovL3RoZW1iYS1ocGMtNzczNDc1ODkxMTMxLXVzLWVhc3QtMS9jb2RlL2FwcC8gL29wdC90aGVtYmEtaHBjLwpjZCAvb3B0L3RoZW1iYS1ocGMgJiYgc2hhMjU2c3VtIC0tICoucHkKU1lOQwpjaG1vZCA3NTUgL3Vzci9sb2NhbC9iaW4vdGhlbWJhLXN5bmMKIyBUaGUgaW5zdGFuY2Ugcm9sZSBjYW4gdGFrZSBhIGZldyBzZWNvbmRzIHRvIGJlIHVzYWJsZSBhZnRlciBsYXVuY2g6IHJldHJ5IGZvciB1cCB0byA1IG1pbnV0ZXMuCmZvciBpIGluICQoc2VxIDEgMjApOyBkbyAvdXNyL2xvY2FsL2Jpbi90aGVtYmEtc3luYyAmJiBicmVhazsgZWNobyAiY29kZSBub3QgcmVhY2hhYmxlIHlldCAoYXR0ZW1wdCAkaSksIHJldHJ5aW5nIGluIDE1IHMiOyBzbGVlcCAxNTsgZG9uZQp0ZXN0IC1mIC9vcHQvdGhlbWJhLWhwYy9jYXRzaW0ucHkKCiMgVGhlIG1vZGVsIHVzZXMgdGhlIHN5c3RlbSBQeXRob24gMyAobm8gcGFja2FnZXMgbmVlZGVkOiBzdGFuZGFyZCBsaWJyYXJ5IG9ubHkpLgpwcmludGYgJyMhL2Jpbi9iYXNoXG5jZCAvb3B0L3RoZW1iYS1ocGMgJiYgZXhlYyBweXRob24zIC11IC9vcHQvdGhlbWJhLWhwYy9jYXRzaW0ucHkgIiRAIlxuJyA+IC91c3IvbG9jYWwvYmluL2NhdHNpbQpjaG1vZCA3NTUgL3Vzci9sb2NhbC9iaW4vY2F0c2ltCgppZiBbICJzcG90IiA9ICJwbGFjZW1lbnQiIF07IHRoZW4KICBkbmYgaW5zdGFsbCAteSBpcGVyZjMKICBjYXQgPiAvZXRjL3N5c3RlbWQvc3lzdGVtL2lwZXJmMy1zZXJ2ZXIuc2VydmljZSA8PCdVTklUJwpbVW5pdF0KRGVzY3JpcHRpb249aXBlcmYzIHNlcnZlciBmb3IgdGhlIHBsYWNlbWVudCBncm91cCBuZXR3b3JrIHRlc3RzCkFmdGVyPW5ldHdvcmstb25saW5lLnRhcmdldAoKW1NlcnZpY2VdCkV4ZWNTdGFydD0vdXNyL2Jpbi9pcGVyZjMgLS1zZXJ2ZXIKUmVzdGFydD1hbHdheXMKVU5JVAogIHN5c3RlbWN0bCBkYWVtb24tcmVsb2FkCiAgc3lzdGVtY3RsIGVuYWJsZSAtLW5vdyBpcGVyZjMtc2VydmVyCmZpCgppZiBbICJzcG90IiA9ICJzcG90IiBdOyB0aGVuCiAgY2F0ID4gL2V0Yy9zeXN0ZW1kL3N5c3RlbS9jYXRzaW0td29ya2VyLnNlcnZpY2UgPDwnVU5JVCcKW1VuaXRdCkRlc2NyaXB0aW9uPVRoZW1iYSBjYXRhc3Ryb3BoZSBtb2RlbCwgY2hlY2twb2ludGluZyBTcG90IHdvcmtlcgpBZnRlcj1uZXR3b3JrLW9ubGluZS50YXJnZXQKCltTZXJ2aWNlXQpXb3JraW5nRGlyZWN0b3J5PS9vcHQvdGhlbWJhLWhwYwpFeGVjU3RhcnQ9L3Vzci9iaW4vcHl0aG9uMyAtdSAvb3B0L3RoZW1iYS1ocGMvd29ya2VyLnB5ClJlc3RhcnQ9b24tZmFpbHVyZQpSZXN0YXJ0U2VjPTEwClVOSVQKICBzeXN0ZW1jdGwgZGFlbW9uLXJlbG9hZAogIHN5c3RlbWN0bCBlbmFibGUgLS1ub3cgY2F0c2ltLXdvcmtlcgpmaQoKcHl0aG9uMyAtYyAiaW1wb3J0IHN5cywgcGxhdGZvcm07IHByaW50KCdweXRob24nLCBzeXMudmVyc2lvbi5zcGxpdCgpWzBdLCBwbGF0Zm9ybS5tYWNoaW5lKCkpIgplY2hvICJ0aGVtYmEtaHBjIG5vZGUgcmVhZHkgKHNwb3QpIgo="
+      + vpc_security_group_ids = [
+          + "sg-0e916eedb652eec2b",
+        ]
+
+      + block_device_mappings {
+          + device_name = "/dev/xvda"
+
+          + ebs {
+              + encrypted                  = "true"
+              + iops                       = (known after apply)
+              + throughput                 = (known after apply)
+              + volume_initialization_rate = (known after apply)
+              + volume_size                = (known after apply)
+              + volume_type                = "gp3"
+            }
+        }
+
+      + iam_instance_profile {
+          + name = "themba-hpc-node-profile"
+        }
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = (known after apply)
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + tag_specifications {
+          + resource_type = "instance"
+          + tags          = {
+              + "ManagedBy" = "terraform"
+              + "Name"      = "themba-spot-worker"
+              + "Project"   = "aws-compute-selection-hpc"
+            }
+        }
+    }
+
+  # aws_s3_object.spot_job[0] will be created
+  + resource "aws_s3_object" "spot_job" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = "themba-hpc-<account-id>-us-east-1"
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content                = jsonencode(
+            {
+              + chunk = 20000
+              + seed  = 26
+              + years = 2400000
+            }
+        )
+      + content_type           = "application/json"
+      + etag                   = (known after apply)
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "spot-job/job.json"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + storage_class          = (known after apply)
+      + tags_all               = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-compute-selection-hpc"
+        }
+      + version_id             = (known after apply)
+    }
+
+Plan: 6 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  ~ fis_template_id      = null -> (known after apply)
+  ~ spot_asg             = "" -> "themba-spot-worker"
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: spot.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "spot.tfplan"
+Releasing state lock. This may take a few moments...

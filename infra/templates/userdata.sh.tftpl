@@ -1,0 +1,65 @@
+#!/bin/bash
+# Boot script for every Themba HPC lab node (rendered by Terraform). Same base for all:
+# settings file, the tool code from S3, the catsim command. Then one extra per role:
+#   placement  iperf3, with a server listening for the other nodes' tests
+#   bench      nothing extra
+#   spot       catsim-worker as a service: it starts (or resumes) the Spot job at boot
+set -euxo pipefail
+mkdir -p /opt/themba-hpc
+
+cat > /etc/themba-hpc.conf <<'CONF'
+REGION=${region}
+BUCKET=${bucket}
+ROLE=${role}
+CONF
+chmod 644 /etc/themba-hpc.conf
+
+# themba-sync: copy the tool code from S3 and print each file's SHA-256 (compare with terraform output app_sha256).
+cat > /usr/local/bin/themba-sync <<'SYNC'
+#!/bin/bash
+set -euo pipefail
+aws s3 cp --recursive --only-show-errors --region ${region} s3://${bucket}/code/app/ /opt/themba-hpc/
+cd /opt/themba-hpc && sha256sum -- *.py
+SYNC
+chmod 755 /usr/local/bin/themba-sync
+# The instance role can take a few seconds to be usable after launch: retry for up to 5 minutes.
+for i in $(seq 1 20); do /usr/local/bin/themba-sync && break; echo "code not reachable yet (attempt $i), retrying in 15 s"; sleep 15; done
+test -f /opt/themba-hpc/catsim.py
+
+# The model uses the system Python 3 (no packages needed: standard library only).
+printf '#!/bin/bash\ncd /opt/themba-hpc && exec python3 -u /opt/themba-hpc/catsim.py "$@"\n' > /usr/local/bin/catsim
+chmod 755 /usr/local/bin/catsim
+
+if [ "${role}" = "placement" ]; then
+  dnf install -y iperf3
+  cat > /etc/systemd/system/iperf3-server.service <<'UNIT'
+[Unit]
+Description=iperf3 server for the placement group network tests
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/iperf3 --server
+Restart=always
+UNIT
+  systemctl daemon-reload
+  systemctl enable --now iperf3-server
+fi
+
+if [ "${role}" = "spot" ]; then
+  cat > /etc/systemd/system/catsim-worker.service <<'UNIT'
+[Unit]
+Description=Themba catastrophe model, checkpointing Spot worker
+After=network-online.target
+
+[Service]
+WorkingDirectory=/opt/themba-hpc
+ExecStart=/usr/bin/python3 -u /opt/themba-hpc/worker.py
+Restart=on-failure
+RestartSec=10
+UNIT
+  systemctl daemon-reload
+  systemctl enable --now catsim-worker
+fi
+
+python3 -c "import sys, platform; print('python', sys.version.split()[0], platform.machine())"
+echo "themba-hpc node ready (${role})"
